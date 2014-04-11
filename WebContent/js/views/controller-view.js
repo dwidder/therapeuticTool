@@ -5,12 +5,13 @@ var ControllerView = Backbone.View.extend({
 	
 	educationSupportView: null,
 	symptomRecoveryView: null,
+	schoolPerformView: null,
 	
 	
 	events: {
 		"click #headerSupportBtn": "setSupportContent",
 		"click #headerRecoveryBtn": "setRecoveryContent",
-		
+		"click #headerSkillsBtn" : "setSchoolContent",
 	},
 	
 	initialize: function(){
@@ -47,7 +48,7 @@ var ControllerView = Backbone.View.extend({
 		if (content === 'support'){
 			this.setHeaderBtnActive('#headerSupportBtn');
 			
-			this.educationSupportView = new EducationSupportView(new ComponentModel({name: "Education and Support"}));
+			this.educationSupportView = new EducationSupportView({model: new ComponentModel({name: "Education and Support"})});
 			var $content = $(this.$el.find("#contentContainer"));
 			$content.append(this.educationSupportView.render().$el);
 			
@@ -55,12 +56,20 @@ var ControllerView = Backbone.View.extend({
 		}else if (content === 'recovery'){
 			this.setHeaderBtnActive('#headerRecoveryBtn');
 			
-			this.symptomRecoveryView = new SymptomRecoveryView(new ComponentModel({name: "Symptom and Recovery"}));
+			this.symptomRecoveryView = new SymptomRecoveryView({model: new ComponentModel({name: "Symptom and Recovery"})});
 			var $content = $(this.$el.find("#contentContainer"));
 			$content.append(this.symptomRecoveryView.render().$el);
 			this.symptomRecoveryView.showChart();
 			
 			this.currentContentView = this.symptomRecoveryView;
+		}else if (content === 'school'){
+			this.setHeaderBtnActive('#headerSkillsBtn');
+			
+			this.schoolPerformView = new SchoolPerformView({model: new ComponentModel({name: "School Performance"})});
+			var $content = $(this.$el.find("#contentContainer"));
+			$content.append(this.schoolPerformView.render().$el);
+			
+			this.currentContentView = this.schoolPerformView;
 		}
 	},
 	
@@ -70,6 +79,10 @@ var ControllerView = Backbone.View.extend({
 	
 	setRecoveryContent: function(){
 		this.setContent('recovery');
+	},
+	
+	setSchoolContent: function(){
+		this.setContent('school');
 	},
 	
 	render: function(){

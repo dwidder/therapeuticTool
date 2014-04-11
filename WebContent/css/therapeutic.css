@@ -66,12 +66,36 @@ body{
 	background-color: white;
 }
 
+.supportVideoAndCommentContainer{
+	overflow: hidden;
+	float: left;
+	width: 60%;
+	border-right: 1px solid #e6e6e6;
+}
+
 .support-video{
 	width: 100%;
 	max-width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.support-video-title{
+	display: inline-block;
+	font-weight: bold;
+	font-size: 24px;
+	padding: 10px 20px;
+}
+
+.support-video-author{
+	padding-left: 20px;
+	font-weight: bold;
+}
+
+.support-video-desc{
+	padding: 0px 20px 10px;
 }
 
 .support-menu{
@@ -85,7 +109,7 @@ body{
 	width: 100%;
 	padding: 5px;
 	margin-bottom: 20px;
-	border: 1px solid #e6e6e6;
+	/* border: 1px solid #e6e6e6; */
 	cursor: pointer;
 }
 
@@ -98,12 +122,19 @@ body{
 	font-size: 16px;
 }
 
+.support-menu-item .supItemDesc{
+	width: 80%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
 .support-menu-item .supItemAuthor{
 	color: #999;
 }
 
 .support-comment-list{
-	width: 50%;
+	width: 100%;
 	float: left;
 	padding: 20px;
 }
@@ -112,7 +143,7 @@ body{
 	width: 100%;
 	padding: 5px;
 	margin-bottom: 20px;
-	border: 1px solid #e6e6e6;
+	/* border: 1px solid #e6e6e6; */
 }
 
 .support-comment .supComAuthor{
@@ -160,7 +191,10 @@ body{
 	margin: 50px auto;
 }
 
-.recovery-table-container table, tr, th, td{
+.recovery-table-container table,
+.recovery-table-container tr,
+.recovery-table-container th,
+.recovery-table-container td{
 	border: 1px solid black;
 }
 
@@ -189,4 +223,77 @@ body{
 	display: inline-block;
 }
 
+/* School Performance*/
+.school-container{
+	width: 80%;
+	min-width: 1000px;
+	max-width: 1500px;
+	height: 100%;
+	padding: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: scroll;
+	background-color: white;
+}
 
+.school-table-container{
+	float: left;
+	width: calc(100% - 250px);	
+}
+
+.school-table{
+	width: 100%;
+	border-bottom: 1px solid #f1f1f1;
+}
+
+.school-table th{
+	border: none;
+	background: aliceblue;
+	padding: 10px;
+}
+
+.school-table tr{
+	border-bottom: 1px solid #f1f1f1;
+}
+
+.school-table td:not(:nth-child(3)){
+	border-left: 1px solid #f1f1f1;
+	border-right: 1px solid #f1f1f1;
+	padding: 10px;
+}
+
+.school-drop-zone-msg{
+	text-align: center;
+}
+
+.primary-need-drop .primary-need{
+	width: 100%;
+	height: 40px;
+	background-color: beige;
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 5px;
+	text-align: center;
+	line-height: 26px;
+}
+
+.primary-need-drop .primary-need[data-needs-type="temp"]{
+	background-color: #f1f1f1;
+}
+
+.primary-need-container{
+	margin-left: calc(100% - 250px);
+	width: 250px;
+	padding: 0px 12.5px
+}
+
+.primary-need-container .primary-need-draggable{
+	width: 225px;
+	height: 40px;
+	background-color: palegoldenrod;
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 5px;
+	text-align: center;
+	line-height: 26px;
+}

@@ -13,6 +13,7 @@ var SupportItemView = Backbone.View.extend({
 	template: _.template(
 			'<div class="supItemDate"><%= date %></div>' +
 			'<div class="supItemTitle"><%= name %></div>' +
+			'<div class="supItemDesc"><%= desc %></div>' +
 			'<div class="supItemAuthor"><%= author %></div>'
 			),
 	

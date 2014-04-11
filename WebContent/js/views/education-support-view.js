@@ -10,7 +10,10 @@ var EducationSupportView = Backbone.View.extend({
 	},
 	
 	initialize: function(){
-		this.supportItemCollectionView = new SupportItemCollectionView({collection: new SupportModelCollection([{name: "v1", author: "Jim", date: "Some Date", videoURL: "http://www.w3schools.com/html/movie.mp4"},{name: "v2", author: "Liam", date: "Some Date", videoURL: "www.idk.com"},{name: "v3", author: "Jason", date: "Some Date", videoURL: "www.idk.com"}])});
+		this.supportItemCollectionView = new SupportItemCollectionView({collection: new SupportModelCollection(
+				[{name: "video1", author: "Jim", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://www.w3schools.com/html/movie.mp4"},{name: "video2", author: "Liam", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://www.html5rocks.com/en/tutorials/video/basics/devstories.webm"},{name: "video3", author: "Jason", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://vjs.zencdn.net/v/oceans.mp4"},{name: "video4", author: "Steve", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://media.w3.org/2010/05/sintel/trailer.mp4"},
+				 {name: "video1", author: "Jim", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://www.w3schools.com/html/movie.mp4"},{name: "video2", author: "Liam", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://www.html5rocks.com/en/tutorials/video/basics/devstories.webm"},{name: "video3", author: "Jason", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://vjs.zencdn.net/v/oceans.mp4"},{name: "video4", author: "Steve", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://media.w3.org/2010/05/sintel/trailer.mp4"},
+				 {name: "video1", author: "Jim", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://www.w3schools.com/html/movie.mp4"},{name: "video2", author: "Liam", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://www.html5rocks.com/en/tutorials/video/basics/devstories.webm"},{name: "video3", author: "Jason", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://vjs.zencdn.net/v/oceans.mp4"},{name: "video4", author: "Steve", desc: "Check out the epitome of awesome, the pinnacle of RD Gundams, the supreme Extreme Gundam! Thanks to my buddy, Dale, for finding me a good deal on it!", date: "Some Date", videoURL: "http://media.w3.org/2010/05/sintel/trailer.mp4"},])});
 		
 		TT.events.bind("showVideo", this.switchVideo, this);
 	},
@@ -25,13 +28,20 @@ var EducationSupportView = Backbone.View.extend({
 		}
 		
 		this.supportVideoView = new SupportVideoView({model: video});
-		this.$el.prepend(this.supportVideoView.render().$el);
+		this.$el.find('.supportVideoAndCommentContainer').append(this.supportVideoView.render().$el);
 		
 		// get the comment data for this video, then create comment view with the data
-		this.supportCommentSectionView = new SupportCommentCollectionView({collection: new SupportCommentModelCollection([{author:"Jim", date: "some date", comment:"lallalalaal"}, {author:"Jason", date: "some date", comment: "babababababba"}, {author:"Liam", date: "some date", comment: "ccaacacacacac"}])});
-		this.$el.find('.supportCommentAndMenu').prepend(this.supportCommentSectionView.render().$el);
+		this.supportCommentSectionView = new SupportCommentCollectionView({collection: new SupportCommentModelCollection(
+			[{author:"Jim", date: "some date", comment:"This is a really good video"},
+			 {author:"Jason", date: "some date", comment: "Play, pause, and seek in the entire video, change the volume, mute, change the playback rate (including going into negative values). See the effect on the video and on the underlying events and properties."},
+			 {author:"Liam", date: "some date", comment: "This page demonstrates the new HTML5 video element, its media API, and the media events."},
+			 {author:"Timmy", date: "some date", comment: "I feel the c funnel are like the things in the gundam strike freedoms wings!"},
+			 {author:"Johnny", date: "some date", comment: "robbert, can the action base of this be used on the RG strike freedom? thanks more power!!"},
+			 {author:"Jake", date: "some date", comment: "I wonder how much tickets are.... No useful link in description ftw.  You should know most of your fan base is too lazy to go actively search for information regarding your shows"},]
+		)});
+		this.$el.find('.supportVideoAndCommentContainer').append(this.supportCommentSectionView.render().$el);
 		
-		this.supportItemCollectionView.$el.css({"margin-left": "50%", width: "50%"});
+		this.supportItemCollectionView.$el.css({"margin-left": "60%", width: "40%"});
 		
 	},
 	
@@ -43,13 +53,13 @@ var EducationSupportView = Backbone.View.extend({
 	},
 	
 	template: _.template(
-			'<div class="supportCommentAndMenu"></div>'
+			'<div class="supportVideoAndCommentContainer"></div>'
 			),
 	
 	render: function(){
 		this.$el.html(this.template());
 		
-		this.$el.find('.supportCommentAndMenu').append(this.supportItemCollectionView.render().$el);
+		this.$el.append(this.supportItemCollectionView.render().$el);
 		
 		return this;
 	}

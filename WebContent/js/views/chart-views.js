@@ -28,6 +28,7 @@ var ChartView = Backbone.View.extend({
 		    commonSeriesSettings: {
 		        argumentField: 'date',
 		        type: 'stackedbar',
+		        color: '#5bc0de',
 		    },
 		    valueAxis: {
 		        title: 'Score',

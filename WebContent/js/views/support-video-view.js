@@ -11,7 +11,9 @@ var SupportVideoView = Backbone.View.extend({
 	},
 	
 	template: _.template(
-			'<video x-webkit-airplay="allow" preload="" src="<%= videoURL %>" poster="" style="width: 100%;" controls></video><div class="support-video-title"><%= name %></div><div class="support-video-author"><%= author %></div><div class="support-video-desc"><%= desc %></div>'
+			'<video x-webkit-airplay="allow" preload="" src="<%= videoURL %>" poster="" style="width: 100%;" controls></video>' +
+			'<div class="support-video-title"><%= name %><button class="btn btn-lg btn-info" style="float: right;">Share</button></div>' +
+			'<div class="support-video-author"><%= author %></div><div class="support-video-desc"><%= desc %></div>'
 			),
 	
 	render: function(){

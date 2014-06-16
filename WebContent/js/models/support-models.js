@@ -5,6 +5,7 @@ var SupportModel = Backbone.Model.extend({
 			author: "",
 			date: "",
 			videoURL: "",
+			thumbNail: "",
 		};
 	}
 });

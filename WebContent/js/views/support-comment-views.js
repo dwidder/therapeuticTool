@@ -11,9 +11,14 @@ var SupportCommentView = Backbone.View.extend({
 	},
 	
 	template: _.template(
-			'<div class="supComAuthor"><%= author %></div>' +
-			'<div class="supComDate"><%= date %></div>' +
-			'<div class="supComComment"><%= comment %></div>'
+			'<div class="support-comment-usericon">' +
+				'<img src="img/user_default_icon.png">' +
+			'</div>' +			
+			'<div class="support-comment-info">' +
+				'<div class="supComAuthor"><%= author %></div>' +
+				'<div class="supComDate"><%= date %></div>' +
+				'<div class="supComComment"><%= comment %></div>' +
+			'</div>'				
 			),
 	
 	render: function(){
@@ -48,5 +53,40 @@ var SupportCommentCollectionView = Backbone.View.extend({
 		var scv = new SupportCommentView({model: m});
 		this.$el.append(scv.render().$el);
 	},
+});
+
+var SupportCommentSectionView = Backbone.View.extend({
+	className: "support-comment-section",
 	
+	supportCommentCollectionView: null,
+	
+	events: {
+	},
+	
+	initialize: function(){
+		
+	},
+	
+	addCommentCollection: function(collection){
+		this.supportCommentCollectionView = new SupportCommentCollectionView({collection: collection});
+		this.$el.find('.support-comments-container').append(this.supportCommentCollectionView.render().$el);
+	},
+	
+	template: _.template(
+			'<div class="support-comment-txt-container">' +
+				'<div class="support-comment-title">All Comments</div>' +
+				'<div class="support-comment-usericon">' +
+					'<img src="img/user_default_icon.png">' +
+				'</div>' +
+				'<div class="support-comment-txt" contenteditable="true"></div>' +
+				'<button id="support-comment-submit" type="button" class="btn btn-primary btn-lg">Post</button>' +
+			'</div>' +
+			'<div class="support-comments-container"></div>'
+			),
+	
+	render: function(){
+		this.$el.html(this.template());
+		
+		return this;
+	},
 });

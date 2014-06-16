@@ -1,10 +1,12 @@
 html{
 	height: 100%;
 	min-width: 1000px;
+	overflow: hidden;
 }
 
 body{
 	height: 100%;
+	overflow: hidden;
 }
 
 .mainContainer{
@@ -20,7 +22,7 @@ body{
 }
 
 #headerContainer .headerIconContainer{
-	display: inline-block;
+	float: left;
 	height: 100%;
 	width: 200px;
 	background-color: palegoldenrod;
@@ -28,21 +30,54 @@ body{
 
 #headerContainer .headerButtonContainer{
 	display: inline-block;
-	position: relative;
-	left: 5px;
-	top: -15px;
+	height: 50px;
+	padding-left: 20px;
+	width: calc(100% - 200px);
+	padding-top: 5px;
 }
 
+#headerContainer .headerButtonContainer.headerButtonSub{
+	background: #777777;
+	color: white;
+}
+
+#headerContainer .headerButtonSub{
+}
+
+.ButtonSubGroup{
+	display: none;
+}
 
 .headerBtn{
+	position: relative;
 	display: inline-block;
+	width: 180px;
 	font-size: 16px;
 	padding: 5px;
 	margin: 5px;
 	cursor: pointer;
+	vertical-align: top;
+	text-align: center;
 }
 
-.headerBtn.active{
+.subheaderBtn.active{
+	border-bottom: 5px solid palegoldenrod;
+}
+
+/* the triangle below the active button */
+.mainheaderBtn.active:after{
+	content: "";
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 0 90px 10px 90px;
+	border-color: transparent transparent #777777 transparent;
+	position: absolute;
+	bottom: -8px;
+	left: 0px;
+}
+
+.headerBtn.subheaderBtn.active{
 	border-bottom: 5px solid palegoldenrod;
 }
 
@@ -71,6 +106,7 @@ body{
 	float: left;
 	width: 60%;
 	border-right: 1px solid #e6e6e6;
+	box-sizing: border-box;
 }
 
 .support-video{
@@ -83,7 +119,6 @@ body{
 }
 
 .support-video-title{
-	display: inline-block;
 	font-weight: bold;
 	font-size: 24px;
 	padding: 10px 20px;
@@ -105,12 +140,33 @@ body{
 	margin-right: auto;
 }
 
+.support-list-title{
+	font-weight: bold;
+	font-size: 24px;
+}
+
 .support-menu-item{
 	width: 100%;
 	padding: 5px;
 	margin-bottom: 20px;
 	/* border: 1px solid #e6e6e6; */
 	cursor: pointer;
+}
+
+.supItemThumbnail{
+	display: inline-block;
+	width: 120px;
+	margin-right: 7px;
+}
+
+.supItemThumbnail img{
+	width: 120px;
+}
+
+.supItemInfo{
+	display: inline-block;
+	width: calc(100% - 127px);
+	vertical-align: top;
 }
 
 .support-menu-item .supItemDate{
@@ -123,7 +179,7 @@ body{
 }
 
 .support-menu-item .supItemDesc{
-	width: 80%;
+	width: 100%;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
@@ -135,8 +191,7 @@ body{
 
 .support-comment-list{
 	width: 100%;
-	float: left;
-	padding: 20px;
+	padding: 0px 20px 20px 20px;
 }
 
 .support-comment{
@@ -144,6 +199,80 @@ body{
 	padding: 5px;
 	margin-bottom: 20px;
 	/* border: 1px solid #e6e6e6; */
+}
+
+.support-comment-usericon{
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	margin-right: 5px;
+}
+
+.support-comment-usericon img{
+	width: 48px;
+	height: 48px;
+}
+
+.support-comment-info{
+	display: inline-block;
+	width: calc(100% - 53px);
+	vertical-align: top;
+}
+
+.support-comment-txt-container{
+	width: 100%;
+	padding: 10px 20px 0px;
+	overflow: hidden;
+}
+
+.support-comment-txt-container .support-comment-usericon{
+	margin-right: 15px;
+}
+
+.support-comment-title{
+	color: #666;
+	font-weight: bold;
+	font-size: 15px;
+	margin-bottom: 7px;
+}
+
+.support-comment-txt{
+	display: inline-block;
+	width: calc(100% - 63px);
+	min-height: 50px;
+	height: auto;
+	margin-bottom: 5px;
+	border: 1px solid #e6e6e6;
+	vertical-align: top;
+	position: relative;
+}
+
+.support-comment-txt:before{
+	width: 0;
+	height: 0;
+	/* border-top: 10px solid transparent; */
+	border-bottom: 10px solid transparent;
+	border-right: 10px solid #e6e6e6;
+	content: "";
+	position: absolute;
+	left: -10px;
+	top: -1px;
+}
+
+.support-comment-txt:after{
+	width: 0;
+	height: 0;
+	/* border-top: 10px solid transparent; */
+	border-bottom: 10px solid transparent;
+	border-right: 10px solid white;
+	content: "";
+	position: absolute;
+	left: -8px;
+	top: 0px;
+}
+
+#support-comment-submit{
+	float: right;
 }
 
 .support-comment .supComAuthor{
@@ -161,6 +290,56 @@ body{
 .support-comment .supComComment{
 	display: block;
 	font-size: 16px;
+}
+
+/* Concussion */
+.concussion-container{
+	width: 80%;
+	min-width: 1000px;
+	max-width: 1500px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+}
+
+#concusion-menu-container{
+	display: inline-block;
+	width: 25%;
+	height: 100%;
+	padding: 5px;
+	border-right: 1px solid #e6e6e6;
+	overflow: scroll;
+}
+
+#concussion-content-container{
+	display: inline-block;
+	width: 75%;
+	height: 100%;
+	padding: 10px;
+	vertical-align: top;
+	overflow: scroll;
+}
+
+.concuss-menu-item{
+	width: 100%;
+	padding: 5px;
+	border-bottom: 1px solid #e6e6e6;
+	cursor: pointer;
+}
+
+.concussItemInfo{
+	display: inline-block;
+	width: 100%;
+	vertical-align: top;
+}
+
+.concussItemTitle{
+	font-weight: bold;
+	font-size: 16px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 /* Recovery */
@@ -246,29 +425,71 @@ body{
 	border-bottom: 1px solid #f1f1f1;
 }
 
-.school-table th{
-	border: none;
-	background: aliceblue;
-	padding: 10px;
-}
-
 .school-table tr{
 	border-bottom: 1px solid #f1f1f1;
 }
 
-.school-table td:not(:nth-child(3)){
+/* set the td to be 1px so the div within would fill all the height */
+.school-table td{
+	height: 1px;
+}
+
+.school-table td, .school-table th{
 	border-left: 1px solid #f1f1f1;
 	border-right: 1px solid #f1f1f1;
 	padding: 10px;
 }
 
+.school-table th{
+	background: aliceblue;
+	padding-left: 5px;
+}
+
+.school-table th:nth-child(4){
+	padding: 0px;
+}
+
+.school-table th .split-header-div{
+	display: inline-block;
+	width: 50%;
+	padding: 4px;
+	border-right: 1px solid #f1f1f1;
+	border-left: 1px solid #f1f1f1;
+	border-top: 1px solid #f1f1f1;
+	vertical-align: bottom;
+	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* the drop zone in the table */
+.school-table td:nth-child(3), .school-table td:nth-child(4), .school-table td:nth-child(5){
+	padding: 0px;
+}
+
+td{
+	width: 20%;
+}
+
 .school-drop-zone-msg{
+	width: 100%;
+	min-height: 40px;
+	background-color: #f1f1f1;
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 5px;
 	text-align: center;
+	line-height: 26px;
+}
+
+.primary-need-drop, .accomandation-drop, .skill-training-drop{
+	height: 100%;
 }
 
 .primary-need-drop .primary-need{
 	width: 100%;
-	height: 40px;
+	min-height: 40px;
 	background-color: beige;
 	border: 1px solid white;
 	border-radius: 10px;
@@ -277,23 +498,58 @@ body{
 	line-height: 26px;
 }
 
-.primary-need-drop .primary-need[data-needs-type="temp"]{
-	background-color: #f1f1f1;
-}
-
-.primary-need-container{
-	margin-left: calc(100% - 250px);
-	width: 250px;
-	padding: 0px 12.5px
-}
-
-.primary-need-container .primary-need-draggable{
-	width: 225px;
-	height: 40px;
-	background-color: palegoldenrod;
+.accomandation-drop .accomandation{
+	width: 100%;
+	min-height: 40px;
+	background-color: antiquewhite;
 	border: 1px solid white;
 	border-radius: 10px;
 	padding: 5px;
 	text-align: center;
 	line-height: 26px;
 }
+
+.skill-training-drop .skill-training{
+	width: 100%;
+	min-height: 40px;
+	background-color: cadetblue;
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 5px;
+	text-align: center;
+	line-height: 26px;
+}
+
+/* make all temp type to have gray background */
+.primary-need[data-needs-type="temp"], .accomandation[data-needs-type="temp"], .skill-training[data-needs-type="temp"]{
+	background-color: #f1f1f1;
+}
+
+.drag-item-container{
+	margin-left: calc(100% - 250px);
+	width: 250px;
+	padding: 0px 12.5px
+}
+
+.drag-item-container .improve-draggables{
+	width: 225px;
+	height: 40px;
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 5px;
+	text-align: center;
+	line-height: 26px;
+}
+
+.primary-need-container .primary-need-draggable{
+	background-color: palegoldenrod;	
+}
+
+.accomandation-container .accomandation-draggable{
+	background-color: antiquewhite;	
+}
+
+.skill-training-container .skill-training-draggable{
+	background-color: cadetblue;
+}
+
